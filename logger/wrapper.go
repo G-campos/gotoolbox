@@ -26,7 +26,12 @@ func GetLoggerInFile() *Logger {
 	if err != nil {
 		log.Fatal("Erro ao abrir o arquivo de log:", err)
 	}
-	defer arquivoLog.Close()
+	defer func(arquivoLog *os.File) {
+		err = arquivoLog.Close()
+		if err != nil {
+			logger.LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
+		}
+	}(arquivoLog)
 
 	// Cria uma nova instância do logger com arquivo de saída
 	logger, err := NewLoggerWithFile("LOG: ", "logs.txt")
