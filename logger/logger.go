@@ -4,6 +4,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"fmt"
 )
 
 type Logger struct {
@@ -36,7 +37,7 @@ func NewLoggerWithFile(p, filename string) (*Logger, error) {
 	defer func(file *os.File) {
 		err = file.Close()
 		if err != nil {
-			LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
+			fmt.Errorf("Erro ao fechar arquivo de logs: %v", err)
 		}
 	}(file)
 
