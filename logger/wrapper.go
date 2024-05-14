@@ -1,9 +1,9 @@
 package logger
 
 import (
+	"fmt"
 	"log"
 	"os"
-	"fmt"
 )
 
 var (
@@ -23,12 +23,12 @@ func GetLogger(p string) *Logger {
 }
 
 func GetLoggerInFile() *Logger {
-	arquivoLog, err := os.OpenFile("logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	arquivoLog, err := os.OpenFile("logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		log.Fatal("Erro ao abrir o arquivo de log:", err)
 	}
-	defer func(arquivoLog *os.File) {
-		err = arquivoLog.Close()
+	defer func(file *os.File) {
+		err = file.Close()
 		if err != nil {
 			fmt.Errorf("Erro ao fechar arquivo de logs: %v", err)
 		}
