@@ -33,6 +33,12 @@ func NewLoggerWithFile(p, filename string) (*Logger, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer func(file *os.File) {
+		err = file.Close()
+		if err != nil {
+			logger.LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
+		}
+	}(file)
 
 	writer := io.Writer(file)
 	logger := log.New(writer, p, log.Ldate|log.Ltime)
