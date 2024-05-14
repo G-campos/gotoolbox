@@ -29,7 +29,7 @@ func GetLoggerInFile() *Logger {
 	defer func(arquivoLog *os.File) {
 		err = arquivoLog.Close()
 		if err != nil {
-			logger.LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
+			LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
 		}
 	}(arquivoLog)
 
