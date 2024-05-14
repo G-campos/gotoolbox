@@ -36,7 +36,7 @@ func NewLoggerWithFile(p, filename string) (*Logger, error) {
 	defer func(file *os.File) {
 		err = file.Close()
 		if err != nil {
-			logger.LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
+			LoggerInLine.Errorf("Erro ao fechar arquivo de logs: %v", err)
 		}
 	}(file)
 
