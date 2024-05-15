@@ -7,14 +7,15 @@ import (
 )
 
 var (
-	LoggerInLine, LoggerInFile = UnifyLogs("LOGGER...")
+	LoggerInLine = = GetLogger("LOGGER..."),
+	LoggerInFile = GetLoggerInFile()
 )
 
-func UnifyLogs(p string) (*Logger, *Logger) {
-	logger := GetLogger(p)
-	loggerInFile := GetLoggerInFile()
-	return logger, loggerInFile
-}
+// func UnifyLogs(p string) (*Logger, *Logger) {
+// 	logger := GetLogger(p)
+// 	loggerInFile := GetLoggerInFile()
+// 	return logger, loggerInFile
+// }
 
 func GetLogger(p string) *Logger {
 	// Initialize Logger
