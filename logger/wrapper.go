@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	LoggerInLine = GetLogger("LOGGER..."),
+	LoggerInLine = GetLogger("LOGGER...")
 	LoggerInFile = GetLoggerInFile()
 )
 
